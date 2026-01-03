@@ -3,6 +3,9 @@ import numpy as np
 from pdf2image import convert_from_path
 import PyPDF2
 import re
+import json
+import os
+from pathlib import Path
 
 
 class CrosswordExtractor:
@@ -183,39 +186,74 @@ class CrosswordExtractor:
 
 # Example usage
 if __name__ == "__main__":
-    # Initialize extractor with known grid size
-    extractor = CrosswordExtractor("crossword.pdf", grid_size=15)
+    # Create output directory if it doesn't exist
+    output_dir = Path("output")
+    output_dir.mkdir(exist_ok=True)
 
-    try:
-        # Process the crossword
-        result = extractor.process()
+    # Get all PDF files from input directory
+    input_dir = Path("input")
+    if not input_dir.exists():
+        print("Error: 'input' folder not found. Please create it and add PDF files.")
+        exit(1)
 
-        # Print results
-        print("\n" + "="*50)
-        print("ACROSS CLUES:")
-        print("="*50)
-        for num in sorted(result['across'].keys()):
-            clue = result['across'][num]
+    pdf_files = list(input_dir.glob("*.pdf"))
+
+    if not pdf_files:
+        print("No PDF files found in 'input' folder.")
+        exit(1)
+
+    print(f"Found {len(pdf_files)} PDF file(s) to process.\n")
+
+    # Process each PDF
+    for pdf_path in pdf_files:
+        print(f"\n{'='*60}")
+        print(f"Processing: {pdf_path.name}")
+        print('='*60)
+
+        try:
+            # Initialize extractor with known grid size
+            extractor = CrosswordExtractor(str(pdf_path), grid_size=15)
+
+            # Process the crossword
+            result = extractor.process()
+
+            # Print results to console
+            print("\nACROSS CLUES:")
+            print("-" * 50)
+            for num in sorted(result['across'].keys()):
+                clue = result['across'][num]
+                print(
+                    f"{num}. Position: (row={clue['position'][0]}, col={clue['position'][1]}), Length: {clue['length']}")
+
+            print("\nDOWN CLUES:")
+            print("-" * 50)
+            for num in sorted(result['down'].keys()):
+                clue = result['down'][num]
+                print(
+                    f"{num}. Position: (row={clue['position'][0]}, col={clue['position'][1]}), Length: {clue['length']}")
+
             print(
-                f"{num}. Position: (row={clue['position'][0]}, col={clue['position'][1]}), Length: {clue['length']}")
+                f"\nGrid size: {result['grid_size'][0]} x {result['grid_size'][1]}")
 
-        print("\n" + "="*50)
-        print("DOWN CLUES:")
-        print("="*50)
-        for num in sorted(result['down'].keys()):
-            clue = result['down'][num]
-            print(
-                f"{num}. Position: (row={clue['position'][0]}, col={clue['position'][1]}), Length: {clue['length']}")
+            # Optional: visualize the grid
+            print("\nGrid visualization (■=white, □=black):")
+            for row in result['grid']:
+                print(''.join(['■' if cell else '□' for cell in row]))
 
-        print(
-            f"\nGrid size: {result['grid_size'][0]} x {result['grid_size'][1]}")
+            # Save to JSON
+            output_filename = pdf_path.stem + ".json"
+            output_path = output_dir / output_filename
 
-        # Optional: visualize the grid
-        print("\nGrid visualization (1=white, 0=black):")
-        for row in result['grid']:
-            print(''.join(['■' if cell else '□' for cell in row]))
+            with open(output_path, 'w') as f:
+                json.dump(result, f, indent=2)
 
-    except Exception as e:
-        print(f"Error processing crossword: {e}")
-        import traceback
-        traceback.print_exc()
+            print(f"\n✓ Results saved to: {output_path}")
+
+        except Exception as e:
+            print(f"✗ Error processing {pdf_path.name}: {e}")
+            import traceback
+            traceback.print_exc()
+
+    print(f"\n{'='*60}")
+    print(f"Processing complete! Check the 'output' folder for JSON files.")
+    print('='*60)

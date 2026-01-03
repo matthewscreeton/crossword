@@ -1,0 +1,7 @@
+# some deps may not be needed since the ocr is being removed 
+numpy
+# pytesseract
+pdf2image
+Pillow
+opencv-python-headless
+PyPDF2

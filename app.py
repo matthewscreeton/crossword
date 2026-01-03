@@ -6,6 +6,7 @@ import re
 import json
 import os
 from pathlib import Path
+import hashlib
 
 
 class CrosswordExtractor:
@@ -179,9 +180,21 @@ class CrosswordExtractor:
         return {
             'across': across,
             'down': down,
-            'grid_size': (self.grid_size, self.grid_size),
-            'grid': self.grid.tolist()
+            'grid_size': (self.grid_size, self.grid_size)
         }
+
+    @staticmethod
+    def get_grid_hash(result):
+        """Generate MD5 hash of the grid structure (across, down, grid_size)."""
+        # Create a canonical representation of the grid data
+        grid_data = {
+            'across': result['across'],
+            'down': result['down'],
+            'grid_size': result['grid_size']
+        }
+        # Convert to JSON string with sorted keys for consistency
+        json_str = json.dumps(grid_data, sort_keys=True)
+        return hashlib.md5(json_str.encode()).hexdigest()
 
 
 # Example usage
@@ -189,6 +202,18 @@ if __name__ == "__main__":
     # Create output directory if it doesn't exist
     output_dir = Path("output")
     output_dir.mkdir(exist_ok=True)
+
+    # Path to the grids.json file
+    grids_file = output_dir / "grids.json"
+
+    # Load existing grids or create empty dict
+    if grids_file.exists():
+        with open(grids_file, 'r') as f:
+            all_grids = json.load(f)
+        print(f"Loaded existing grids.json with {len(all_grids)} grid(s).\n")
+    else:
+        all_grids = {}
+        print("Creating new grids.json file.\n")
 
     # Get all PDF files from input directory
     input_dir = Path("input")
@@ -204,6 +229,9 @@ if __name__ == "__main__":
 
     print(f"Found {len(pdf_files)} PDF file(s) to process.\n")
 
+    new_grids_added = 0
+    skipped_grids = 0
+
     # Process each PDF
     for pdf_path in pdf_files:
         print(f"\n{'='*60}")
@@ -216,6 +244,24 @@ if __name__ == "__main__":
 
             # Process the crossword
             result = extractor.process()
+
+            # Get MD5 hash of the grid structure
+            grid_hash = CrosswordExtractor.get_grid_hash(result)
+            print(f"Grid hash: {grid_hash}")
+
+            # Check if this grid structure already exists
+            if grid_hash in all_grids:
+                print(f"✓ Grid structure already exists in grids.json")
+                # Add this source file to the existing entry if not already there
+                if pdf_path.name not in all_grids[grid_hash]['source_files']:
+                    all_grids[grid_hash]['source_files'].append(pdf_path.name)
+                    print(f"  Added '{pdf_path.name}' to source_files")
+                    new_grids_added += 1
+                else:
+                    print(
+                        f"  '{pdf_path.name}' already in source_files - skipping")
+                    skipped_grids += 1
+                continue
 
             # Print results to console
             print("\nACROSS CLUES:")
@@ -237,23 +283,34 @@ if __name__ == "__main__":
 
             # Optional: visualize the grid
             print("\nGrid visualization (■=white, □=black):")
-            for row in result['grid']:
+            for row in extractor.grid:
                 print(''.join(['■' if cell else '□' for cell in row]))
 
-            # Save to JSON
-            output_filename = pdf_path.stem + ".json"
-            output_path = output_dir / output_filename
+            # Add source_files as an array
+            result['source_files'] = [pdf_path.name]
 
-            with open(output_path, 'w') as f:
-                json.dump(result, f, indent=2)
+            # Add to all_grids dictionary
+            all_grids[grid_hash] = result
+            new_grids_added += 1
 
-            print(f"\n✓ Results saved to: {output_path}")
+            print(f"\n✓ Added new grid to grids.json")
 
         except Exception as e:
             print(f"✗ Error processing {pdf_path.name}: {e}")
             import traceback
             traceback.print_exc()
 
-    print(f"\n{'='*60}")
-    print(f"Processing complete! Check the 'output' folder for JSON files.")
-    print('='*60)
+    # Save updated grids.json
+    if new_grids_added > 0:
+        with open(grids_file, 'w') as f:
+            json.dump(all_grids, f, indent=2)
+        print(f"\n{'='*60}")
+        print(f"✓ Saved grids.json with {len(all_grids)} total grid(s)")
+        print(f"  - New grids added: {new_grids_added}")
+        print(f"  - Skipped (already exists): {skipped_grids}")
+        print('='*60)
+    else:
+        print(f"\n{'='*60}")
+        print(
+            f"No new grids to add. All {skipped_grids} file(s) already in grids.json")
+        print('='*60)

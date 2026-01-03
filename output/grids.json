@@ -1,0 +1,657 @@
+{
+  "9a8eef5bc9e7545a996c3a9945a32e7c": {
+    "across": {
+      "1": {
+        "position": [
+          0,
+          0
+        ],
+        "length": 9
+      },
+      "6": {
+        "position": [
+          0,
+          10
+        ],
+        "length": 5
+      },
+      "9": {
+        "position": [
+          2,
+          0
+        ],
+        "length": 5
+      },
+      "10": {
+        "position": [
+          2,
+          6
+        ],
+        "length": 9
+      },
+      "11": {
+        "position": [
+          4,
+          0
+        ],
+        "length": 15
+      },
+      "13": {
+        "position": [
+          6,
+          0
+        ],
+        "length": 8
+      },
+      "14": {
+        "position": [
+          6,
+          9
+        ],
+        "length": 6
+      },
+      "16": {
+        "position": [
+          8,
+          0
+        ],
+        "length": 6
+      },
+      "18": {
+        "position": [
+          8,
+          7
+        ],
+        "length": 8
+      },
+      "21": {
+        "position": [
+          10,
+          0
+        ],
+        "length": 15
+      },
+      "23": {
+        "position": [
+          12,
+          0
+        ],
+        "length": 9
+      },
+      "25": {
+        "position": [
+          12,
+          10
+        ],
+        "length": 5
+      },
+      "26": {
+        "position": [
+          14,
+          0
+        ],
+        "length": 5
+      },
+      "27": {
+        "position": [
+          14,
+          6
+        ],
+        "length": 9
+      }
+    },
+    "down": {
+      "1": {
+        "position": [
+          0,
+          0
+        ],
+        "length": 5
+      },
+      "2": {
+        "position": [
+          0,
+          2
+        ],
+        "length": 11
+      },
+      "3": {
+        "position": [
+          0,
+          4
+        ],
+        "length": 7
+      },
+      "4": {
+        "position": [
+          0,
+          6
+        ],
+        "length": 8
+      },
+      "5": {
+        "position": [
+          0,
+          8
+        ],
+        "length": 6
+      },
+      "6": {
+        "position": [
+          0,
+          10
+        ],
+        "length": 7
+      },
+      "7": {
+        "position": [
+          0,
+          12
+        ],
+        "length": 3
+      },
+      "8": {
+        "position": [
+          0,
+          14
+        ],
+        "length": 9
+      },
+      "12": {
+        "position": [
+          4,
+          12
+        ],
+        "length": 11
+      },
+      "13": {
+        "position": [
+          6,
+          0
+        ],
+        "length": 9
+      },
+      "15": {
+        "position": [
+          7,
+          8
+        ],
+        "length": 8
+      },
+      "17": {
+        "position": [
+          8,
+          4
+        ],
+        "length": 7
+      },
+      "19": {
+        "position": [
+          8,
+          10
+        ],
+        "length": 7
+      },
+      "20": {
+        "position": [
+          9,
+          6
+        ],
+        "length": 6
+      },
+      "22": {
+        "position": [
+          10,
+          14
+        ],
+        "length": 5
+      },
+      "24": {
+        "position": [
+          12,
+          2
+        ],
+        "length": 3
+      }
+    },
+    "grid_size": [
+      15,
+      15
+    ],
+    "source_files": [
+      "crossword-20260102-78253.pdf"
+    ]
+  },
+  "559d06e9901894e94f56d0dba423cd8d": {
+    "across": {
+      "1": {
+        "position": [
+          0,
+          1
+        ],
+        "length": 13
+      },
+      "8": {
+        "position": [
+          2,
+          0
+        ],
+        "length": 4
+      },
+      "9": {
+        "position": [
+          2,
+          5
+        ],
+        "length": 10
+      },
+      "10": {
+        "position": [
+          4,
+          0
+        ],
+        "length": 8
+      },
+      "11": {
+        "position": [
+          4,
+          9
+        ],
+        "length": 6
+      },
+      "13": {
+        "position": [
+          6,
+          0
+        ],
+        "length": 10
+      },
+      "16": {
+        "position": [
+          6,
+          11
+        ],
+        "length": 4
+      },
+      "17": {
+        "position": [
+          8,
+          0
+        ],
+        "length": 4
+      },
+      "18": {
+        "position": [
+          8,
+          5
+        ],
+        "length": 10
+      },
+      "20": {
+        "position": [
+          10,
+          0
+        ],
+        "length": 6
+      },
+      "22": {
+        "position": [
+          10,
+          7
+        ],
+        "length": 8
+      },
+      "24": {
+        "position": [
+          12,
+          0
+        ],
+        "length": 10
+      },
+      "26": {
+        "position": [
+          12,
+          11
+        ],
+        "length": 4
+      },
+      "27": {
+        "position": [
+          14,
+          1
+        ],
+        "length": 13
+      }
+    },
+    "down": {
+      "1": {
+        "position": [
+          0,
+          1
+        ],
+        "length": 11
+      },
+      "2": {
+        "position": [
+          0,
+          3
+        ],
+        "length": 5
+      },
+      "3": {
+        "position": [
+          0,
+          5
+        ],
+        "length": 9
+      },
+      "4": {
+        "position": [
+          0,
+          7
+        ],
+        "length": 7
+      },
+      "5": {
+        "position": [
+          0,
+          9
+        ],
+        "length": 5
+      },
+      "6": {
+        "position": [
+          0,
+          11
+        ],
+        "length": 9
+      },
+      "7": {
+        "position": [
+          0,
+          13
+        ],
+        "length": 3
+      },
+      "12": {
+        "position": [
+          4,
+          13
+        ],
+        "length": 11
+      },
+      "14": {
+        "position": [
+          6,
+          3
+        ],
+        "length": 9
+      },
+      "15": {
+        "position": [
+          6,
+          9
+        ],
+        "length": 9
+      },
+      "19": {
+        "position": [
+          8,
+          7
+        ],
+        "length": 7
+      },
+      "21": {
+        "position": [
+          10,
+          5
+        ],
+        "length": 5
+      },
+      "23": {
+        "position": [
+          10,
+          11
+        ],
+        "length": 5
+      },
+      "25": {
+        "position": [
+          12,
+          1
+        ],
+        "length": 3
+      }
+    },
+    "grid_size": [
+      15,
+      15
+    ],
+    "source_files": [
+      "crossword-20260103-78256.pdf"
+    ]
+  },
+  "ef945f9599e8c9a75603e326995f6c97": {
+    "across": {
+      "1": {
+        "position": [
+          0,
+          0
+        ],
+        "length": 9
+      },
+      "6": {
+        "position": [
+          0,
+          10
+        ],
+        "length": 5
+      },
+      "9": {
+        "position": [
+          2,
+          0
+        ],
+        "length": 5
+      },
+      "10": {
+        "position": [
+          2,
+          6
+        ],
+        "length": 9
+      },
+      "11": {
+        "position": [
+          4,
+          0
+        ],
+        "length": 7
+      },
+      "12": {
+        "position": [
+          4,
+          8
+        ],
+        "length": 7
+      },
+      "13": {
+        "position": [
+          6,
+          0
+        ],
+        "length": 14
+      },
+      "17": {
+        "position": [
+          8,
+          1
+        ],
+        "length": 14
+      },
+      "21": {
+        "position": [
+          10,
+          0
+        ],
+        "length": 7
+      },
+      "23": {
+        "position": [
+          10,
+          8
+        ],
+        "length": 7
+      },
+      "25": {
+        "position": [
+          12,
+          0
+        ],
+        "length": 9
+      },
+      "26": {
+        "position": [
+          12,
+          10
+        ],
+        "length": 5
+      },
+      "27": {
+        "position": [
+          14,
+          0
+        ],
+        "length": 5
+      },
+      "28": {
+        "position": [
+          14,
+          6
+        ],
+        "length": 9
+      }
+    },
+    "down": {
+      "1": {
+        "position": [
+          0,
+          0
+        ],
+        "length": 8
+      },
+      "2": {
+        "position": [
+          0,
+          2
+        ],
+        "length": 5
+      },
+      "3": {
+        "position": [
+          0,
+          4
+        ],
+        "length": 9
+      },
+      "4": {
+        "position": [
+          0,
+          6
+        ],
+        "length": 7
+      },
+      "5": {
+        "position": [
+          0,
+          8
+        ],
+        "length": 7
+      },
+      "6": {
+        "position": [
+          0,
+          10
+        ],
+        "length": 5
+      },
+      "7": {
+        "position": [
+          0,
+          12
+        ],
+        "length": 9
+      },
+      "8": {
+        "position": [
+          0,
+          14
+        ],
+        "length": 6
+      },
+      "14": {
+        "position": [
+          6,
+          2
+        ],
+        "length": 9
+      },
+      "15": {
+        "position": [
+          6,
+          10
+        ],
+        "length": 9
+      },
+      "16": {
+        "position": [
+          7,
+          14
+        ],
+        "length": 8
+      },
+      "18": {
+        "position": [
+          8,
+          6
+        ],
+        "length": 7
+      },
+      "19": {
+        "position": [
+          8,
+          8
+        ],
+        "length": 7
+      },
+      "20": {
+        "position": [
+          9,
+          0
+        ],
+        "length": 6
+      },
+      "22": {
+        "position": [
+          10,
+          4
+        ],
+        "length": 5
+      },
+      "24": {
+        "position": [
+          10,
+          12
+        ],
+        "length": 5
+      }
+    },
+    "grid_size": [
+      15,
+      15
+    ],
+    "source_files": [
+      "crossword-20260101-78257.pdf"
+    ]
+  }
+}
